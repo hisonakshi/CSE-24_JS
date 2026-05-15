@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Responsive Bootstrap Page</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+
+        body{
+            background-color:#eef2f7;
+            font-family:Arial, sans-serif;
+        }
+
+        /* Header */
+        .header{
+            background-color:#4f46e5;
+            color:white;
+            padding:40px;
+            text-align:center;
+        }
+
+        /* Navbar */
+        .custom-nav{
+            background-color:#1e293b;
+        }
+
+        .custom-nav a{
+            color:white !important;
+            margin-right:15px;
+        }
+
+        .custom-nav a:hover{
+            color:#38bdf8 !important;
+        }
+
+        /* Content Boxes */
+        .box{
+            background-color:white;
+            padding:25px;
+            border-radius:12px;
+            box-shadow:0 4px 8px rgba(0,0,0,0.1);
+            height:100%;
+        }
+
+        .box h3{
+            color:#4f46e5;
+        }
+
+        /* Footer */
+        .footer{
+            background-color:#1e293b;
+            color:white;
+            text-align:center;
+            padding:15px;
+            margin-top:30px;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <div class="header">
+        <h1>My Responsive Website</h1>
+        <p>Using Bootstrap Grid System</p>
+    </div>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg custom-nav">
+
+        <div class="container">
+
+            <button class="navbar-toggler bg-light"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#menu">
+
+                <span class="navbar-toggler-icon"></span>
+
+            </button>
+
+            <div class="collapse navbar-collapse" id="menu">
+
+                <ul class="navbar-nav mx-auto">
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Home</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">About</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Services</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contact</a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+    </nav>
+
+    <!-- Content Section -->
+    <div class="container mt-5">
+
+        <div class="row g-4">
+
+            <!-- Column 1 -->
+            <div class="col-12 col-md-6">
+
+                <div class="box">
+
+                    <h3>Web Design</h3>
+
+                    <p>
+                        Responsive web pages automatically adjust
+                        according to screen size using Bootstrap
+                        rows and columns.
+                    </p>
+
+                </div>
+
+            </div>
+
+            <!-- Column 2 -->
+            <div class="col-12 col-md-6">
+
+                <div class="box">
+
+                    <h3>Bootstrap Grid</h3>
+
+                    <p>
+                        Bootstrap breakpoints help create layouts
+                        for mobile, tablet, and desktop screens
+                        easily.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <p>© 2026 Responsive Web Page</p>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
