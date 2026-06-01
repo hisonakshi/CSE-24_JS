@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+  content="width=device-width, initial-scale=1.0">
+
+  <title>Amazon Products</title>
+
+  <!-- FONT AWESOME -->
+
+  <link rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:Arial;
+    }
+
+    body{
+      background:#e3e6e6;
+    }
+
+    /* ================= NAVBAR ================= */
+
+    .navbar{
+      height:60px;
+
+      background:#131921;
+
+      color:white;
+
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+
+      padding:0 20px;
+
+      gap:20px;
+
+      position:sticky;
+      top:0;
+      z-index:1000;
+    }
+
+    /* LEFT */
+
+    .nav-left{
+      display:flex;
+      align-items:center;
+      gap:20px;
+    }
+
+    .logo img{
+      width:110px;
+      height:35px;
+      object-fit:contain;
+    }
+
+    .nav-location{
+      cursor:pointer;
+    }
+
+    .small-text{
+      font-size:0.75rem;
+      color:#cccccc;
+    }
+
+    .location-icon{
+      display:flex;
+      align-items:center;
+      gap:5px;
+
+      font-weight:bold;
+    }
+
+    /* SEARCH */
+
+    .nav-search{
+      flex:1;
+
+      max-width:700px;
+
+      height:40px;
+
+      display:flex;
+
+      border-radius:5px;
+
+      overflow:hidden;
+    }
+
+    .nav-search select{
+      width:60px;
+
+      border:none;
+
+      background:#f3f3f3;
+    }
+
+    .nav-search input{
+      flex:1;
+
+      border:none;
+
+      padding-left:10px;
+
+      font-size:1rem;
+
+      outline:none;
+    }
+
+    .nav-search button{
+      width:50px;
+
+      border:none;
+
+      background:#febd69;
+
+      cursor:pointer;
+
+      font-size:1.1rem;
+    }
+
+    /* RIGHT */
+
+    .nav-right{
+      display:flex;
+      align-items:center;
+      gap:25px;
+    }
+
+    .nav-item{
+      cursor:pointer;
+    }
+
+    .nav-item span{
+      font-size:0.9rem;
+      font-weight:bold;
+    }
+
+    .nav-cart{
+      display:flex;
+      align-items:center;
+      gap:6px;
+
+      font-weight:bold;
+
+      cursor:pointer;
+    }
+
+    .nav-cart i{
+      font-size:1.4rem;
+    }
+
+
+.cart-count{
+  background:red;
+
+  color:white;
+
+  border-radius:50%;
+
+  padding:2px 7px;
+
+  font-size:0.8rem;
+
+  margin-left:5px;
+}
+
+
+
+    /* ================= PAGE ================= */
+
+    .products-page{
+      padding:30px;
+    }
+
+    .products-title{
+      font-size:2rem;
+
+      margin-bottom:25px;
+
+      color:#111;
+    }
+
+    .products-container{
+      display:grid;
+
+      grid-template-columns:
+      repeat(auto-fit, minmax(250px, 1fr));
+
+      gap:25px;
+    }
+
+    /* ================= PRODUCT CARD ================= */
+
+    .product-card{
+      background:white;
+
+      border-radius:10px;
+
+      padding:18px;
+
+      transition:0.3s;
+
+      cursor:pointer;
+
+      box-shadow:0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .product-card:hover{
+      transform:translateY(-5px);
+    }
+
+    .product-card img{
+      width:100%;
+      height:250px;
+
+      object-fit:contain;
+
+      margin-bottom:15px;
+    }
+
+    .product-name{
+      font-size:1rem;
+
+      color:#0f1111;
+
+      margin-bottom:10px;
+
+      min-height:50px;
+    }
+
+    .rating{
+      color:#ff9900;
+
+      margin-bottom:10px;
+    }
+
+    .price{
+      font-size:1.3rem;
+
+      font-weight:bold;
+
+      color:#b12704;
+
+      margin-bottom:5px;
+    }
+
+    .old-price{
+      text-decoration:line-through;
+
+      color:gray;
+
+      font-size:0.9rem;
+
+      margin-left:5px;
+    }
+
+    .delivery{
+      color:green;
+
+      font-size:0.9rem;
+
+      margin-bottom:15px;
+    }
+
+    .buy-btn{
+      width:100%;
+
+      background:#ffd814;
+
+      border:none;
+
+      padding:10px;
+
+      border-radius:20px;
+
+      font-weight:bold;
+
+      cursor:pointer;
+
+      transition:0.3s;
+    }
+
+    .buy-btn:hover{
+      background:#f7ca00;
+    }
+
+    /* ================= RESPONSIVE ================= */
+
+    @media(max-width:900px){
+
+      .navbar{
+        flex-wrap:wrap;
+        height:auto;
+
+        padding:10px;
+      }
+
+      .nav-search{
+        order:3;
+        width:100%;
+      }
+
+    }
+
+    @media(max-width:600px){
+
+      .nav-location,
+      .nav-item{
+        display:none;
+      }
+
+      .products-page{
+        padding:15px;
+      }
+
+    }
+
+  </style>
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+
+<div class="navbar">
+
+  <!-- LEFT -->
+
+  <div class="nav-left">
+
+    <div class="logo">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg">
+    </div>
+
+    <div class="nav-location">
+
+      <p class="small-text">
+        Deliver to
+      </p>
+
+      <div class="location-icon">
+        <i class="fa-solid fa-location-dot"></i>
+        <span>India</span>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- SEARCH -->
+
+  <div class="nav-search">
+
+    <select>
+      <option>All</option>
+    </select>
+
+    <input type="text"
+    placeholder="Search Amazon">
+
+    <button>
+      <i class="fa-solid fa-magnifying-glass"></i>
+    </button>
+
+  </div>
+
+  <!-- RIGHT -->
+
+  <div class="nav-right">
+
+    <div class="nav-item">
+      <p class="small-text">
+        Hello, Sign in
+      </p>
+
+      <span>Accounts & Lists</span>
+    </div>
+
+    <div class="nav-item">
+      <p class="small-text">
+        Returns
+      </p>
+
+      <span>& Orders</span>
+    </div>
+
+   
+<div class="nav-cart">
+
+  <i class="fa-solid fa-cart-shopping"></i>
+
+  Cart
+  <span class="cart-count">
+    0
+  </span>
+
+</div>
+
+
+  </div>
+
+</div>
+
+<!-- ================= PRODUCTS ================= -->
+
+<div class="products-page">
+
+  <h1 class="products-title"
+  id="page-title">
+    Products
+  </h1>
+
+  <div class="products-container"
+  id="products-container">
+
+  </div>
+
+</div>
+
+<script>
+
+const params =
+new URLSearchParams(window.location.search);
+
+const category =
+params.get("category");
+
+const title =
+document.getElementById("page-title");
+
+const container =
+document.getElementById("products-container");
+
+let products = [];
+
+
+/* ================= HEALTH ================= */
+
+if(category === "health"){
+
+  title.innerText =
+  "Health & Personal Care";
+
+  products = [
+
+    {
+      name:"Premium Skin Care Kit",
+      price:"₹999",
+      oldPrice:"₹1499",
+      image:"https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?q=80&w=1200"
+    },
+
+    {
+      name:"Natural Hair Oil",
+      price:"₹499",
+      oldPrice:"₹799",
+      image:"https://images.unsplash.com/photo-1505576399279-565b52d4ac71?q=80&w=1200"
+    },
+
+    {
+      name:"Organic Face Wash",
+      price:"₹299",
+      oldPrice:"₹499",
+      image:"https://images.unsplash.com/photo-1556228578-8c89e6adf883?q=80&w=1200"
+    }
+
+  ];
+
+}
+
+
+/* ================= ELECTRONICS ================= */
+
+if(category === "electronics"){
+
+  title.innerText =
+  "Electronics";
+
+  products = [
+
+    {
+      name:"iPhone Smartphone",
+      price:"₹24,999",
+      oldPrice:"₹29,999",
+      image:"https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?q=80&w=1200"
+    },
+
+    {
+      name:"Gaming Laptop",
+      price:"₹59,999",
+      oldPrice:"₹69,999",
+      image:"https://images.unsplash.com/photo-1496181133206-80ce9b88a853?q=80&w=1200"
+    },
+
+    {
+      name:"Wireless Headphones",
+      price:"₹1,999",
+      oldPrice:"₹3,499",
+      image:"https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=1200"
+    }
+
+  ];
+
+}
+
+
+/* ================= FASHION ================= */
+
+if(category === "fashion"){
+
+  title.innerText =
+  "Fashion";
+
+  products = [
+
+    {
+      name:"Women Fashion Dress",
+      price:"₹1,499",
+      oldPrice:"₹2,499",
+      image:"https://images.unsplash.com/photo-1496747611176-843222e1e57c?q=80&w=1200"
+    },
+
+    {
+      name:"Men Stylish Jacket",
+      price:"₹2,499",
+      oldPrice:"₹3,999",
+      image:"https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?q=80&w=1200"
+    },
+
+    {
+      name:"Sports Shoes",
+      price:"₹3,999",
+      oldPrice:"₹5,999",
+      image:"https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=1200"
+    }
+
+  ];
+
+}
+
+
+/* ================= SHOW PRODUCTS ================= */
+
+products.forEach((product)=>{
+
+  container.innerHTML += `
+
+  <div class="product-card">
+
+    <img src="${product.image}">
+
+    <h3 class="product-name">
+      ${product.name}
+    </h3>
+
+    <div class="rating">
+      ★★★★☆ (4.2)
+    </div>
+
+    <div class="price">
+
+      ${product.price}
+
+      <span class="old-price">
+        ${product.oldPrice}
+      </span>
+
+    </div>
+
+    <p class="delivery">
+      FREE Delivery by Amazon
+    </p>
+
+    <button class="buy-btn">
+      Add to Cart
+    </button>
+
+  </div>
+
+  `;
+
+});
+
+</script>
+
+</body>
+</html>
+

@@ -1,64 +1,62 @@
+// HERO IMAGE SLIDER
 
-let num = 10;
-console.log(num)
-console.log(typeof(num))
-num = false;
-console.log(num)
-console.log(typeof(num))
+const slides = document.querySelectorAll(".slide");
 
+let index = 0;
 
-//FUNCTION
-var sayHello = function(){
-    alert("hello world")
+function showSlide(){
+
+  slides.forEach((slide)=>{
+    slide.classList.remove("active");
+  });
+
+  slides[index].classList.add("active");
+
+  index++;
+
+  if(index >= slides.length){
+    index = 0;
+  }
+
 }
 
-//ARRAY
-var numberArray = [1,2,3]
-var animals = new Array("cat","dog")
+setInterval(showSlide, 3000);
 
-//OBJECT
-var person = {
-    name : "Sonakshi",
-    age : "20",
-    title : "Student of ABESEC",
+
+// SEARCH FUNCTION
+
+const searchBtn = document.querySelector(".search-icon");
+const searchInput = document.querySelector(".search-input");
+
+searchBtn.addEventListener("click", ()=>{
+
+  if(searchInput.value === ""){
+    alert("Please enter something to search");
+  }
+  else{
+    alert("Searching for: " + searchInput.value);
+  }
+
+});
+
+
+// BACK TO TOP
+
+const backToTop = document.querySelector(".foot-panel1");
+
+backToTop.addEventListener("click", ()=>{
+
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
+
+});
+
+
+function openPage(category){
+
+  window.location.href = `products.html?category=${category}`;
+
 }
-
-// TO CREATE A UNIQUE IDENTITY
-const sym1 = Symbol(4)
-console.log(sym1);
-const sym2 = Symbol(4)
-console.log(sym2);
-if(sym1 == sym2){
-console.log("true")
-}else{
-    console.log("false")
-}
-
-//JS Operators
-// = : assign the value
-// == compare the values
-// === : stritly check data type and values both
-
-
-b = 20
-a = 40
-b = b + a
-
-//Maximum out of the three no. by using ternary operator 
-
-//LOOPS - For, 
-let x;
-for(i=0;i<3;i++){
-    console.log(i)
-}
-
-let count;
-document.write("starting loop" + "</br>");
-for(let count=0; count < 10;count++){
-    document.write("Current count:" +count + "</br>")
-}
-
-
-
-
 
