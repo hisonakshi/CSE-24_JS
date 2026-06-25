@@ -1,261 +1,129 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<title>Student Marks and Grade Calculator</title>
 
-  <title>Amazon Clone</title>
+<style>
+    body{
+        font-family: Arial, Helvetica, sans-serif;
+        background-color: #f0f4f8;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
 
-  <link rel="stylesheet" href="style.css">
+    .container{
+        background: white;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.2);
+        width: 350px;
+        text-align: center;
+    }
 
-  <link rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    h2{
+        color: #2c3e50;
+        margin-bottom: 20px;
+    }
+
+    input{
+        width: 90%;
+        padding: 10px;
+        margin: 10px 0;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    button{
+        padding: 10px 20px;
+        background-color: #3498db;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    button:hover{
+        background-color: #2980b9;
+    }
+
+    #result{
+        margin-top: 20px;
+        text-align: left;
+        font-size: 16px;
+        line-height: 1.6;
+    }
+</style>
+
 </head>
-
 <body>
 
-<header>
+<div class="container">
 
-  <!-- NAVBAR -->
+    <h2>Student Marks Calculator</h2>
 
-  <div class="navbar">
+    <input type="number" id="subjects" placeholder="Enter Number of Subjects">
 
-    <div class="nav-logo border">
-      <img
-      src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg"
-      alt="Amazon Logo"
-      class="amazon-logo">
-    </div>
+    <button onclick="calculate()">Calculate</button>
 
-    <div class="nav-address border">
-
-      <p class="add-1">Deliver to</p>
-
-      <div class="add-icon">
-        <i class="fa-solid fa-location-dot"></i>
-        <p class="add-2">India</p>
-      </div>
-
-    </div>
-
-    <div class="nav-search">
-
-      <select class="search-select">
-        <option>All</option>
-      </select>
-
-      <input
-      type="text"
-      placeholder="Search Amazon"
-      class="search-input">
-
-      <div class="search-icon">
-        <i class="fa-solid fa-magnifying-glass"></i>
-      </div>
-
-    </div>
-
-    <div class="nav-signin border">
-      <p><span>Hello, Sign in</span></p>
-      <p class="nav-sec">Accounts & Lists</p>
-    </div>
-
-    <div class="nav-return border">
-      <p><span>Returns</span></p>
-      <p class="nav-sec">& Orders</p>
-    </div>
-
-    <div class="nav-cart border">
-      <i class="fa-solid fa-cart-shopping"></i>
-      Cart
-    </div>
-
-  </div>
-
-  <!-- PANEL -->
-
-  <div class="panel">
-
-    <div class="panel-all border">
-      <i class="fa-solid fa-bars"></i>
-      All
-    </div>
-
-    <div class="panel-ops">
-      <a>Today's Deals</a>
-      <a>Customer Service</a>
-      <a>Registry</a>
-      <a>Gift Cards</a>
-      <a>Sell</a>
-    </div>
-
-    <div class="panel-deals border">
-      Shop Deals in Electronics
-    </div>
-
-  </div>
-
-</header>
-
-<!-- HERO SECTION -->
-
-<div class="hero-section">
-
-  <div class="hero-slider">
-
-    <img class="slide active"
-    src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=1600">
-
-    <img class="slide"
-    src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1600">
-
-    <img class="slide"
-    src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=1600">
-
-  </div>
-
-  <div class="hero-msg">
-    <p>
-      You are on amazon.com. You can also shop on
-      <a href="https://www.amazon.in" target="_blank">
-        Amazon India
-      </a>
-      for millions of products with fast local delivery.
-    </p>
-  </div>
+    <div id="result"></div>
 
 </div>
 
-<!-- CATEGORY SECTION -->
+<script>
 
-<div class="category-section">
+function calculate(){
 
-  <div class="category-card">
-    <i class="fa-solid fa-laptop"></i>
-    <p>Electronics</p>
-  </div>
+    let n = parseInt(document.getElementById("subjects").value);
 
-  <div class="category-card">
-    <i class="fa-solid fa-shirt"></i>
-    <p>Fashion</p>
-  </div>
+    if(isNaN(n) || n <= 0){
+        alert("Please enter a valid number of subjects");
+        return;
+    }
 
-  <div class="category-card">
-    <i class="fa-solid fa-couch"></i>
-    <p>Furniture</p>
-  </div>
+    let total = 0;
+    let pass = true;
 
-  <div class="category-card">
-    <i class="fa-solid fa-mobile-screen"></i>
-    <p>Mobiles</p>
-  </div>
+    for(let i = 1; i <= n; i++){
 
-  <div class="category-card">
-    <i class="fa-solid fa-gamepad"></i>
-    <p>Gaming</p>
-  </div>
+        let marks = parseFloat(prompt("Enter marks for Subject " + i));
 
-</div>
+        total += marks;
 
-<!-- SHOP SECTION -->
+        if(marks < 40){
+            pass = false;
+        }
+    }
 
-<div class="shop-section">
+    let average = total / n;
+    let grade;
 
-  <div class="box">
-    <div class="box-content">
+    if(average >= 90)
+        grade = "A+";
+    else if(average >= 80)
+        grade = "A";
+    else if(average >= 70)
+        grade = "B";
+    else if(average >= 60)
+        grade = "C";
+    else if(average >= 40)
+        grade = "D";
+    else
+        grade = "F";
 
-      <h2>Health & Personal Care</h2>
+    let status = pass ? "Pass" : "Fail";
 
-      <div class="box-img"
-      style="background-image:url('https://images.unsplash.com/photo-1515377905703-c4788e51af15?q=80&w=1200');">
-      </div>
+    document.getElementById("result").innerHTML = `
+        <b>Total Marks:</b> ${total} <br>
+        <b>Average:</b> ${average.toFixed(2)} <br>
+        <b>Grade:</b> ${grade} <br>
+        <b>Result:</b> ${status}
+    `;
+}
 
-<button class="shop-btn" onclick="openPage('health')"> See More</button>
-
-    </div>
-  </div>
-
-  <div class="box">
-    <div class="box-content">
-
-      <h2>Electronics</h2>
-
-      <div class="box-img"
-      style="background-image:url('https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?q=80&w=1200');">
-      </div>
-
-      <button class="shop-btn" onclick="openPage('electronics')">See More</button>
-
-    </div>
-  </div>
-
-  <div class="box">
-    <div class="box-content">
-
-      <h2>Fashion</h2>
-
-      <div class="box-img"
-      style="background-image:url('https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=1200');">
-      </div>
-
-      <button class="shop-btn" onclick="openPage('fashion')">See More</button>
-
-    </div>
-  </div>
-
-</div>
-
-<!-- FOOTER -->
-
-<footer>
-
-  <div class="foot-panel1">
-    Back to Top
-  </div>
-
-  <div class="foot-panel2">
-
-    <ul>
-      <p>Get to Know Us</p>
-      <a>Careers</a>
-      <a>About Amazon</a>
-      <a>Investor Relations</a>
-    </ul>
-
-    <ul>
-      <p>Make Money with Us</p>
-      <a>Sell Products</a>
-      <a>Become an Affiliate</a>
-      <a>Advertise Your Products</a>
-    </ul>
-
-    <ul>
-      <p>Amazon Payment Products</p>
-      <a>Business Card</a>
-      <a>Shop with Points</a>
-      <a>Reload Balance</a>
-    </ul>
-
-  </div>
-
-  <div class="foot-panel4">
-
-    <div class="pages">
-      <a>Conditions of Use</a>
-      <a>Privacy Notice</a>
-      <a>Your Ads Privacy Choices</a>
-    </div>
-
-    <div class="copyright">
-      © 2026 Amazon Clone
-    </div>
-
-  </div>
-
-</footer>
-
-<script src="script.js"></script>
+</script>
 
 </body>
 </html>
