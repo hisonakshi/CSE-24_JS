@@ -2,7 +2,7 @@
 //JS can change all the html page elements in the page 
 //JS can change all the attributes of page
 //JS can change the css styles of page
-//JS can remove th existing elements and attributes 
+//JS can remove th existing elements and attributes
 //JS can create new HTML events in the page.
 
 // let x = document.getElementById("demo");
