@@ -1,0 +1,150 @@
+*{
+    margin:0;
+    padding:0;
+    font-family:arial;
+  }
+  
+  
+  /* NAV-BAR */
+  .nav-bar{
+    position:fixed;
+    top:0;
+    width:100%;
+    height:60px;
+   background-color:#fefbf2
+  }
+  
+  .logo img{
+    height:52px;
+    margin:6px 400px 2px 0px
+  }
+  
+  .Contact{
+    color:#f56f42;
+  }
+  
+  .nav-options{
+    display:flex;
+    justify-content:flex-end;
+    gap:45px;
+    align-items:center;
+    font-size:17px;
+    font-weight:500;
+    margin-right:30px;
+  }
+  
+  
+  /* HIDE-DIVS */
+  .about:hover + .hidden-div1{ 
+    display:block
+  }
+  .hidden-div1{
+    background-color: white;
+    margin-right:370px;
+    position:absolute;
+    top:60px;
+    height:100px;
+    width:18%;
+    padding:5px;
+    padding-top:27px;
+    padding-bottom:10px;
+    border-top:2px solid #1b5445;
+    display:none
+  }
+  .hidden-div1 p{
+    border-bottom:1px dotted #e8e7e3;
+   font-size:17px;
+    font-weight:500;
+    margin:0px 0px 15px 18px;
+  }
+  
+  .service:hover + .hidden-div2{
+    display:block
+  }
+  .hidden-div2{
+    position:absolute;
+    top:60px;
+    height:550px;
+    width:94%;
+    background-color: white;
+    border-top:2px solid #1b5445;
+    display:none ;
+  }
+  .vertical{
+    display:flex;
+    justify-content:space-evenly;
+    height:540px;
+  }
+  
+  .one,.two,.three,.fours,.fives,.sixs{
+    margin-top:10px;
+    font-weight:500;
+    width:13%;
+    border-bottom:1px ;
+  }
+  .one p,.two p,.three p,.fours p,.fives p,.sixs p{
+    margin-top:14px;
+    font-size:16px;
+  }
+  .h{
+    font-size:18px;
+    background-color:#e3dd9f;
+    padding:7px;
+    font-weight:900;
+    margin-top:30px;
+  }
+  
+  .work:hover + .hidden-div3{
+    display:block
+  }
+  .hidden-div3{
+    background-color: white;
+    position:absolute;
+    top:60px;
+    height:130px;
+    width:19%;
+    padding:5px;
+    padding-top:27px;
+    margin-right:150px;
+    border-top:2px solid #1b5445;
+    display:none;
+  }
+  .hidden-div3 p{
+    border-bottom:1px dotted #e8e7e3;
+   font-size:16px;
+    font-weight:500;
+    margin:0px 0px 10px 18px;
+  }
+  
+/* PANEL-11 */
+  .p-11{
+    height:450px;
+    background-color:#fefbf2;
+    text-align:center;
+   }
+   .intro{
+    height:300px;
+    margin-top:60px;
+    padding-top:110px;
+   }
+   h1{
+     color: #f56f42;
+     font-size:46px;
+   }
+   h4{
+     font-weight:700;
+     font-size:22px;
+     margin-top:10px;
+     margin-bottom:12px;
+   }
+   .p-11 p{
+    font-size:17px;
+    }
+   .btn-11{
+     background-color: #1b5445;
+     color:white;
+     font-size:20px;
+     padding:17px;
+     border-radius:5px;
+     margin-top:20px;
+   }
